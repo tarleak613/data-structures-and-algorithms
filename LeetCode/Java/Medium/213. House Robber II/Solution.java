@@ -20,6 +20,18 @@ class Solution {
         int notPick = memo(nums, dp, i + 1, end);
         return dp[i] = Math.max(pick, notPick);
     }
+    private int solve(int[] nums, int start, int end) {
+        int[] dp = new int[nums.length + 2];
+
+        for (int i = end; i >= start; i--) {
+            int pick = nums[i] + dp[i + 2];
+            int notPick = dp[i + 1];
+
+            dp[i] = Math.max(pick, notPick);
+        }
+
+        return dp[start];
+    }
     public int rob(int[] nums) {
         //recursion
         // int n = nums.length;
@@ -31,19 +43,27 @@ class Solution {
         // return Math.max(case1, case2);
 
         //memoization
+        // int n = nums.length;
+
+        // if(n == 1) return nums[0];
+
+        // int[] dp = new int[n + 1];
+        // Arrays.fill(dp, -1);
+
+        // int case1 = memo(nums, dp, 0, n - 2);
+        // // Reset DP before solving Case 2
+        // Arrays.fill(dp, -1);
+        // int case2 = memo(nums, dp, 1, n - 1);
+
+        // return Math.max(case1, case2);
+
+        //tabulation
         int n = nums.length;
 
-        if(n == 1) return nums[0];
+        if (n == 1) return nums[0];
 
-        int[] dp = new int[n + 1];
-        Arrays.fill(dp, -1);
-
-        int case1 = memo(nums, dp, 0, n - 2);
-
-        // Reset DP before solving Case 2
-        Arrays.fill(dp, -1);
-
-        int case2 = memo(nums, dp, 1, n - 1);
+        int case1 = solve(nums, 0, n - 2);
+        int case2 = solve(nums, 1, n - 1);
 
         return Math.max(case1, case2);
     }
