@@ -69,7 +69,7 @@ class Solution {
                 boolean notpick = dp[i-1][sum];
                 boolean pick = false;
                 if(nums[i] <= sum){
-                    pick = dp[i-1][target - nums[i]];
+                    pick = dp[i-1][sum - nums[i]];
                 }
                 dp[i][sum] = pick || notpick;
             }
