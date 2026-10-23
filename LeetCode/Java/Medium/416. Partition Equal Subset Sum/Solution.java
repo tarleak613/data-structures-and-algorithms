@@ -59,7 +59,10 @@ class Solution {
             dp[i][0] = true;
         }
 
-        dp[0][nums[0]] = true;
+        if(nums[0] <= target){
+            dp[0][nums[0]] = true;
+        }
+        
 
         for(int i = 1; i < n; i++){
             for(int sum = 1; sum <= target; sum++){
