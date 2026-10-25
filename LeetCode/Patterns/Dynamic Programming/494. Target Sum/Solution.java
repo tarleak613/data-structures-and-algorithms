@@ -6,7 +6,7 @@ class Solution {
         for(int a: nums){
             totalSum += a;
         }
-        
+        if (Math.abs(diff) > totalSum) return 0;
         int rem = totalSum - diff;
         
         if(rem < 0 || rem % 2 != 0) 
@@ -14,14 +14,14 @@ class Solution {
             
         int target = rem/2;
         
-        int[][] dp = new int[n][totalSum+1];
+        int[][] dp = new int[n][target+1];
         if (nums[0] == 0) {
             dp[0][0] = 2;
         } else {
             dp[0][0] = 1;
         }
         
-        if(nums[0] != 0 && nums[0] <= totalSum){
+        if(nums[0] != 0 && nums[0] <= target){
             dp[0][nums[0]] = 1;
         }
         
