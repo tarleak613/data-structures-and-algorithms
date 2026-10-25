@@ -1,6 +1,6 @@
 # 📝 494. Target Sum (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/target-sum)
+🔗 [Problem Link](https://leetcode.com/problems/target-sum/)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-orange) ![Language](https://img.shields.io/badge/Language-Java-blue)
 
