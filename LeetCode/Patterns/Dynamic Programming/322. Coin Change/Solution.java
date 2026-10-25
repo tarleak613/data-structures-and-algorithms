@@ -55,29 +55,58 @@ class Solution {
         // return ans >= (int) 1e9 ? -1 : ans;
 
         //tabulation
+        // int n = coins.length;
+        // int[][] dp = new int[n][amount+1];
+
+        // //base case
+        // for(int i = 0; i <= amount; i++){
+        //     if(i % coins[0] == 0){
+        //         dp[0][i] = i/coins[0];
+        //     }else{
+        //         dp[0][i] = (int) 1e9;
+        //     }
+        // }
+        // //loops
+        // for(int i = 1; i < n; i++){
+        //     for(int amt = 0; amt <= amount; amt++){
+        //         //recurrence relation
+        //         int notpick = dp[i-1][amt];
+        //         int pick = Integer.MAX_VALUE;
+        //         if(coins[i] <= amt){
+        //             pick = 1 + dp[i][amt - coins[i]];
+        //         }
+        //         dp[i][amt] = Math.min(pick, notpick);
+        //     }
+        // }
+        // return dp[n-1][amount] >= (int) 1e9 ? -1 : dp[n-1][amount];
+
+        //space optimization
         int n = coins.length;
-        int[][] dp = new int[n][amount+1];
+        int[] prev = new int[amount+1];
+        int[] cur = new int[amount+1];
 
         //base case
         for(int i = 0; i <= amount; i++){
             if(i % coins[0] == 0){
-                dp[0][i] = i/coins[0];
+                prev[i] = i/coins[0];
             }else{
-                dp[0][i] = (int) 1e9;
+                prev[i] = (int) 1e9;
             }
         }
         //loops
         for(int i = 1; i < n; i++){
             for(int amt = 0; amt <= amount; amt++){
                 //recurrence relation
-                int notpick = dp[i-1][amt];
+                int notpick = prev[amt];
                 int pick = Integer.MAX_VALUE;
                 if(coins[i] <= amt){
-                    pick = 1 + dp[i][amt - coins[i]];
+                    pick = 1 + cur[amt - coins[i]];
                 }
-                dp[i][amt] = Math.min(pick, notpick);
+                cur[amt] = Math.min(pick, notpick);
             }
+            prev = cur.clone();
         }
-        return dp[n-1][amount] >= (int) 1e9 ? -1 : dp[n-1][amount];
+        return prev[amount] >= (int) 1e9 ? -1 : prev[amount];
+
     }
 }
