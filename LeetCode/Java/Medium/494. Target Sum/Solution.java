@@ -1,5 +1,5 @@
 class Solution {
-    public int findTargetSumWays(int[] nums, int diff) {
+    public int findTargetSumWays(int[] nums, int target) {
         //tabulation
         int n = nums.length;
         int totalSum = 0;
