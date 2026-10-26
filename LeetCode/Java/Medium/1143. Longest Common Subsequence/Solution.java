@@ -40,15 +40,14 @@ class Solution {
 
         //tabulation
         int[][] dp = new int[n1+1][n2+1];
-       
 
         //base case
-        for(int i = 0; i < n1-1; i++){
-            dp[0][i] = 0;
-        }
-        for(int i = 0; i < n2-1; i++){
-            dp[i][0] = 0;
-        }
+        // for(int i = 0; i < n1-1; i++){
+        //     dp[0][i] = 0;
+        // }
+        // for(int i = 0; i < n2-1; i++){
+        //     dp[i][0] = 0;
+        // }
         //loops
         for(int i1 = 1; i1 <= n1; i1++){
             for(int i2 = 1; i2 <= n2; i2++){
