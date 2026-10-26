@@ -25,9 +25,7 @@ class Solution {
                     cur[i2] =Math.max(prev[i2], cur[i2-1]);
                 }   
             }
-            int[] temp = prev;
-            prev = cur;
-            cur = temp;
+            prev = cur.clone();
         }
         return cur[n];
     }
