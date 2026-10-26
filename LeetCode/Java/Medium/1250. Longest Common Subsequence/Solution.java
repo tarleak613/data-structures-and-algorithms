@@ -43,10 +43,10 @@ class Solution {
 
         //base case
         // for(int i = 0; i < n1-1; i++){
-        //     dp[0][i] = 0;
+        //     dp[i][0] = 0;
         // }
         // for(int i = 0; i < n2-1; i++){
-        //     dp[i][0] = 0;
+        //     dp[0][i] = 0;
         // }
         //loops
         for(int i1 = 1; i1 <= n1; i1++){
