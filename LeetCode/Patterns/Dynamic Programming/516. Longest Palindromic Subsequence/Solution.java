@@ -16,6 +16,7 @@ class Solution {
         // }
         //loops
         for(int i1 = 1; i1 <= n; i1++){
+            cur[0] = 0;
             for(int i2 = 1; i2 <= n; i2++){
                 //reccurence realtion
                 if(s.charAt(i1-1) == s2.charAt(i2-1)){
@@ -25,8 +26,10 @@ class Solution {
                     cur[i2] =Math.max(prev[i2], cur[i2-1]);
                 }   
             }
-            prev = cur.clone();
+            int[] temp = prev;
+            prev = cur;
+            cur = temp;
         }
-        return cur[n];
+        return prev[n];
     }
 }
