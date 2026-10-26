@@ -4,7 +4,8 @@ class Solution {
         String s2 = new StringBuilder(s).reverse().toString();
 
         //tabulation
-        int[][] dp = new int[n+1][n+1];
+        int[] prev = new int[n+1];
+        int[] cur = new int[n+1];
 
         //base case
         // for(int i = 0; i < n1-1; i++){
@@ -18,13 +19,14 @@ class Solution {
             for(int i2 = 1; i2 <= n; i2++){
                 //reccurence realtion
                 if(s.charAt(i1-1) == s2.charAt(i2-1)){
-                    dp[i1][i2] = 1 + dp[i1 - 1][i2 - 1];
+                    cur[i2] = 1 + prev[i2 - 1];
                 }
                 else{
-                    dp[i1][i2] =Math.max(dp[i1-1][i2], dp[i1][i2-1]);
+                    cur[i2] =Math.max(prev[i2], cur[i2-1]);
                 }   
             }
+            prev = cur.clone();
         }
-        return dp[n][n];
+        return cur[n];
     }
 }
