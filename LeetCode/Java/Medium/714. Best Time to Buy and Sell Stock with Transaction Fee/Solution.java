@@ -20,19 +20,37 @@ class Solution {
         // return fun(prices, 0, 1, fee);
 
         //tabulation
-        int[][] dp = new int[n+1][2];
+        // int[][] dp = new int[n+1][2];
+
+        // //base case
+        // //loops
+        // for(int i = n-1; i >=0; i--){
+        //     for(int buy = 0; buy <=1; buy++){
+        //         if(buy == 1){ // buy stocks
+        //             dp[i][buy] = Math.max(-prices[i] + dp[i+1][0], dp[i+1][1]);
+        //         }else{ // sell stocks
+        //             dp[i][buy] =  Math.max(prices[i] - fee + dp[i+1][1], dp[i+1][0]);
+        //         }
+        //     }
+        // }
+        // return dp[0][1];
+
+        //space optimization
+        int[] next = new int[2];
 
         //base case
         //loops
         for(int i = n-1; i >=0; i--){
+            int[] cur = new int[2];
             for(int buy = 0; buy <=1; buy++){
                 if(buy == 1){ // buy stocks
-                    dp[i][buy] = Math.max(-prices[i] + dp[i+1][0], dp[i+1][1]);
+                    cur[buy] = Math.max(-prices[i] + next[0], next[1]);
                 }else{ // sell stocks
-                    dp[i][buy] =  Math.max(prices[i] - fee + dp[i+1][1], dp[i+1][0]);
+                    cur[buy] =  Math.max(prices[i] - fee + next[1], next[0]);
                 }
             }
+            next = cur;
         }
-        return dp[0][1];
+        return next[1];
     }
 }
