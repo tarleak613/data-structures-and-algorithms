@@ -50,26 +50,45 @@ class Solution {
         // return memo(prices, dp, 0, 1);
 
         //tabulation
-        int[][] dp = new int[n+1][2];
+        // int[][] dp = new int[n+1][2];
 
-        //base case
-        dp[n][0] = 0;
-        dp[n][1] = 0;
-        //loops
-        for(int i = n-1; i >= 0; i--){
-            for(int buy = 0; buy <= 1; buy++){
-                //reccurence relation
-                if(buy == 1){
-                    int take = -prices[i] + dp[i+1][0]; // buying
-                    int notTake = 0 + dp[i+1][1]; // notbuying
-                    dp[i][buy] = Math.max(take, notTake);
-                }else{
-                    int take = prices[i] + dp[i+1][1]; //selling so now you can buy
-                    int notTake = 0 + dp[i+1][0]; //  not gonna sell
-                    dp[i][buy] = Math.max(take, notTake);
-                }
+        // //base case
+        // dp[n][0] = 0;
+        // dp[n][1] = 0;
+        // //loops
+        // for(int i = n-1; i >= 0; i--){
+        //     for(int buy = 0; buy <= 1; buy++){
+        //         //reccurence relation
+        //         if(buy == 1){
+        //             int take = -prices[i] + dp[i+1][0]; // buying
+        //             int notTake = 0 + dp[i+1][1]; // notbuying
+        //             dp[i][buy] = Math.max(take, notTake);
+        //         }else{
+        //             int take = prices[i] + dp[i+1][1]; //selling so now you can buy
+        //             int notTake = 0 + dp[i+1][0]; //  not gonna sell
+        //             dp[i][buy] = Math.max(take, notTake);
+        //         }
+        //     }
+        // }
+        // return dp[0][1];   
+
+            //space optmization
+            int buy = 0, sell = 0;
+            int profit = 0;
+
+            //base case
+            int curBuy = 0;
+            int nextBuy = 0;
+            int curSell = 0;
+            int nextSell = 0;
+            //loops
+            for(int i = n-1; i >= 0; i--){
+                curBuy = Math.max(-prices[i] + nextSell, nextBuy);
+                curSell = Math.max(prices[i] + nextBuy, nextSell);
+                
+                nextBuy = curBuy;
+                nextSell = curSell;
             }
-        }
-        return dp[0][1];   
+            return nextBuy;  
     }
 }
