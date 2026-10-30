@@ -16,6 +16,27 @@ class Solution {
     public int maxProfit(int[] prices) {
         int n = prices.length;
 
-        return fun(prices, 0, 1, 2);
+        // return fun(prices, 0, 1, 2);
+
+        //tabulation
+        int[][][] dp = new int[n+1][2][3];
+
+        //base case
+        // dp[n][0][0] = 0;
+        // dp[n][1][0] = 0;
+
+        //loops
+        for(int i = n-1; i >= 0; i--){
+            for(int buy = 0; buy <= 1; buy++){
+                for(int cap =1; cap <= 2; cap++){
+                    if(buy == 1){ //buy stocks
+                        dp[i][buy][cap] = Math.max(-prices[i] + dp[i+1][0][cap], dp[i+1][1][cap]);
+                    }else{ //sell stocks
+                        dp[i][buy][cap] = Math.max(prices[i] + dp[i+1][1][cap-1], dp[i+1][0][cap]);
+                    }
+                }
+            }
+        }
+        return dp[0][1][2];
     }
 }
