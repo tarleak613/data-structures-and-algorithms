@@ -1,6 +1,6 @@
 # 📝 368. Largest Divisible Subset (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/largest-divisible-subset)
+🔗 [Problem Link](https://leetcode.com/problems/largest-divisible-subset/)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-orange) ![Language](https://img.shields.io/badge/Language-Java-blue)
 
