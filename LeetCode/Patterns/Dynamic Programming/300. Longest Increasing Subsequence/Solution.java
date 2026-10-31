@@ -39,24 +39,38 @@ class Solution {
         // return memo(nums, dp, 0, -1);
 
         //tabulation
-        int[][] dp = new int[n+1][n+1];
+        // int[][] dp = new int[n+1][n+1];
 
-        //base case
-        for(int i = 0; i <=n; i++){
-            dp[n][0] = 0;
-        }
-        //loops
-        for(int i = n-1; i >=0; i--){
-            for(int prevI = 0; prevI <= n; prevI++){
-                //reccurence relation
-                int notpick = dp[i+1][prevI];
-                int pick = 0;
-                if(prevI == 0 || nums[i] > nums[prevI-1]){
-                    pick = 1 + dp[i+1][i+1]; 
+        // //base case
+        // for(int i = 0; i <=n; i++){
+        //     dp[n][0] = 0;
+        // }
+        // //loops
+        // for(int i = n-1; i >=0; i--){
+        //     for(int prevI = 0; prevI <= n; prevI++){
+        //         //reccurence relation
+        //         int notpick = dp[i+1][prevI];
+        //         int pick = 0;
+        //         if(prevI == 0 || nums[i] > nums[prevI-1]){
+        //             pick = 1 + dp[i+1][i+1]; 
+        //         }
+        //         dp[i][prevI] = Math.max(pick, notpick);
+        //     }
+        // }
+        // return dp[0][0];
+
+        //more optimized
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        int maxi = 1;
+        for(int i =0; i <n; i++){
+            for(int prev = 0; prev <i; prev++){
+                if(nums[prev] < nums[i]){
+                    dp[i] = Math.max(dp[i], 1 + dp[prev]);
                 }
-                dp[i][prevI] = Math.max(pick, notpick);
             }
+            maxi = Math.max(maxi, dp[i]);
         }
-        return dp[0][0];
+        return maxi;
     }
 }
