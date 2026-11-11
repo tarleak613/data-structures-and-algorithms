@@ -3,7 +3,7 @@
 Track your progress on the Curated 100hrs DSA core interview preparation list.
 
 ## Progress
-- **Completed:** 9 / 238 (3.8%)
+- **Completed:** 10 / 238 (4.2%)
 
 ---
 
@@ -91,7 +91,7 @@ Track your progress on the Curated 100hrs DSA core interview preparation list.
 - [ ] Contains Duplicate
 - [x] [Single Number](./Java/Easy/136. Single Number/)
 - [ ] Single Element in a Sorted Array
-- [ ] Majority Element
+- [x] [Majority Element](./Java/Easy/169. Majority Element/)
 - [ ] Majority Element II
 - [ ] Count Nice Pairs
 
