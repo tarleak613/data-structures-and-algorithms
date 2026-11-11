@@ -3,14 +3,14 @@
 Track your progress on the Grind 100 coding interview preparation list.
 
 ## Progress
-- **Completed:** 10 / 100 (10.0%)
+- **Completed:** 11 / 100 (11.0%)
 
 ---
 
 ## Checklist
 
 ### 📂 Array & Two Pointers
-- [ ] Two Sum
+- [x] [Two Sum](./Java/Easy/1. Two Sum/)
 - [ ] 3Sum
 - [ ] Container With Most Water
 - [x] [Move Zeroes](./Java/Easy/283. Move Zeroes/)
