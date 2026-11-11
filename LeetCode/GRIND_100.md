@@ -3,7 +3,7 @@
 Track your progress on the Grind 100 coding interview preparation list.
 
 ## Progress
-- **Completed:** 14 / 100 (14.0%)
+- **Completed:** 15 / 100 (15.0%)
 
 ---
 
@@ -16,7 +16,7 @@ Track your progress on the Grind 100 coding interview preparation list.
 - [x] [Move Zeroes](./Java/Easy/283. Move Zeroes/)
 - [x] [Sort Colors](./Java/Medium/75. Sort Colors/)
 - [ ] Product of Array Except Self
-- [ ] Next Permutation
+- [x] [Next Permutation](./Java/Medium/31. Next Permutation/)
 - [ ] Trapping Rain Water
 - [ ] Find the Duplicate Number
 - [x] [Majority Element](./Java/Easy/169. Majority Element/)
